@@ -59,4 +59,13 @@ katakana_df.to_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\japanese_katakana
 basic_words_df.to_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\basic_words.csv', index=False)
 basic_kanji_df.to_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\basic_kanji.csv', index=False)
 
+def alphabet_learning():
+    while True:
+        print ("Time to learn alphabet: ")
 
+        input_symbols = input("Input number of symbols: ")
+        if input_symbols == 'quit':
+            break
+
+def random_symbols():
+    while True:
