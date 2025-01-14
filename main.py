@@ -15,8 +15,7 @@ def alphabet_random_symbols ():
     #print(f"Katakana: {katakana_symbol} ({katakana_romaji})")
     return hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji
 
-def display_symbols():
-    hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji = alphabet_random_symbols()
+def display_symbols(hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji):
 
     root = tk.Tk()
     root.geometry("")
@@ -30,18 +29,15 @@ def display_symbols():
     katakana_label.pack()
 
     root.mainloop()
-
-def train_romaji():
+    
+def get_user_input():
     hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji = alphabet_random_symbols()
-    user_input = check_answer()
+    user_input = input(f"Enter the romaji for {hiragana_symbol} or {katakana_symbol}: ")
 
-def check_answer():
-    hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji = alphabet_random_symbols()
-    user_input = entry.get()
-    if user_input.lower() == hiragana_romaji.lower() or user_input.lower() == katakana_romaji.lower():
-        result_label.config(text="Correct!", fg="green")
-    else:
-        result_label.config(text="Incorrect. Try again.", fg="red")
+    return user_input
+
+def train_romaji(hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji):
+    #user_input = get_user_input()
 
     root = tk.Tk()
     root.geometry("")
@@ -54,19 +50,33 @@ def check_answer():
     entry = tk.Entry(root, font=("Helvetica", 50))
     entry.pack()
 
-    submit_button = tk.Button(root, text="Submit", command=check_answer)
-    submit_button.pack()
-
     result_label = tk.Label(root, text="", font=("Helvetica", 50))
     result_label.pack()
+    
+    submit_button = tk.Button(root, text="Submit", command=lambda: check_answer(hiragana_romaji, katakana_romaji, result_label, entry))
+    submit_button.pack()
 
     root.mainloop()
 
-    return user_input
+def check_answer(hiragana_romaji, katakana_romaji, result_label, entry):
+    entered_text = entry.get()
+    #if user_input.lower() == hiragana_romaji.lower() or user_input.lower() == katakana_romaji.lower():
+        #result_label.config(text="Correct!", fg="green")
+    #else:
+        #
+        # result_label.config(text="Incorrect. Try again.", fg="red")
 
+    if entered_text == hiragana_romaji or entered_text == katakana_romaji:
+        result_label.config(text="Correct!", fg="green")
+    else:
+        result_label.config(text="Incorrect, try again.", fg="red")
 
 def main():
-    display_symbols()
-    train_romaji()
+    hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji = alphabet_random_symbols()
+    display_symbols(hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji)
+    train_romaji(hiragana_symbol, hiragana_romaji, katakana_symbol, katakana_romaji)
+
+if __name__ == "__main__":
+    main()
 
 #alphabet_random_symbols()
