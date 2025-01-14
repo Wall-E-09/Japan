@@ -1,6 +1,5 @@
 import pandas as pd
 
-# Data for Hiragana and Katakana alphabets
 hiragana_data = {
     "Hiragana": [
         "あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "さ", "し", "す", "せ", "そ",
@@ -32,14 +31,12 @@ katakana_data = {
         ["Katakana"] * 46
 }
 
-# Data for basic Japanese words
 basic_words_data = {
     "Word": ["こんにちは", "ありがとう", "さようなら", "すみません", "はい", "いいえ", "おはよう", "おやすみ", "おいしい", "たべる"],
     "Romaji": ["konnichiwa", "arigatou", "sayounara", "sumimasen", "hai", "iie", "ohayou", "oyasumi", "oishii", "taberu"],
     "Meaning": ["Hello", "Thank you", "Goodbye", "Excuse me/Sorry", "Yes", "No", "Good morning", "Good night", "Delicious", "To eat"]
 }
 
-# Data for basic Kanji characters
 basic_kanji_data = {
     "Kanji": ["日", "月", "火", "水", "木", "金", "土", "山", "川", "田"],
     "Onyomi": ["nichi", "getsu", "ka", "sui", "moku", "kin", "do", "san", "sen", "den"],
@@ -47,13 +44,11 @@ basic_kanji_data = {
     "Meaning": ["Day/Sun", "Month/Moon", "Fire", "Water", "Wood/Tree", "Gold/Money", "Earth", "Mountain", "River", "Field"]
 }
 
-# Create DataFrames
 hiragana_df = pd.DataFrame(hiragana_data)
 katakana_df = pd.DataFrame(katakana_data)
 basic_words_df = pd.DataFrame(basic_words_data)
 basic_kanji_df = pd.DataFrame(basic_kanji_data)
 
-# Save DataFrames to CSV files
 hiragana_df.to_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\japanese_hiragana.csv', index=False)
 katakana_df.to_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\japanese_katakana.csv', index=False)
 basic_words_df.to_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\basic_words.csv', index=False)
@@ -61,6 +56,17 @@ basic_kanji_df.to_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\basic_kanji.cs
 
 def alphabet_learning():
     while True:
+        try:
+            num_symbols = int(input_symbols)
+            if num_symbols > 0:
+                print("Hiragana symbols:")
+                print(hiragana_df.sample(n=num_symbols).to_string(index=False))
+                print("\nKatakana symbols:")
+                print(katakana_df.sample(n=num_symbols).to_string(index=False))
+            else:
+                print("Please enter a positive number.")
+        except ValueError:
+            print("Invalid input. Please enter a number or 'quit' to exit.")
         print ("Time to learn alphabet: ")
 
         input_symbols = input("Input number of symbols: ")
@@ -68,4 +74,7 @@ def alphabet_learning():
             break
 
 def random_symbols():
-    while True:
+    for i in range(2):
+        print (katakana_data)
+
+random_symbols()
