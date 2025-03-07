@@ -2,8 +2,8 @@ import random
 import pandas as pd
 import tkinter as tk
 
-hiragana_df = pd.read_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\japanese_hiragana.csv')
-katakana_df = pd.read_csv(r'C:\Users\Home\Documents\GitHub\Japan\data\japanese_katakana.csv')
+hiragana_df = pd.read_csv(r'C:\Users\mashc\OneDrive\Documents\GitHub\Japan\data\japanese_hiragana.csv')
+katakana_df = pd.read_csv(r'C:\Users\mashc\OneDrive\Documents\GitHub\Japan\data\japanese_katakana.csv')
 
 def alphabet_random_symbols ():
     index_of_symbols = random.randint(1, 45)
