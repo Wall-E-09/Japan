@@ -1,0 +1,27 @@
+CREATE DATABASE IF NOT EXISTS my_database;
+USE my_database;
+
+CREATE TABLE user (
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    user_nickname VARCHAR(225) NOT NULL
+);
+
+CREATE TABLE topic (
+    id_topic INT AUTO_INCREMENT PRIMARY KEY,
+    topic_name VARCHAR(225) NOT NULL
+);
+
+CREATE TABLE progress (
+    id_user INT NOT NULL,
+    id_topic INT NOT NULL,
+    progress INT NOT NULL,
+    progress_status ENUM('Not Started', 'In Progress', 'Completed') NOT NULL,
+    PRIMARY KEY (id_user, id_topic),
+    FOREIGN KEY (id_user) REFERENCES user(id_user) ON DELETE CASCADE,
+    FOREIGN KEY (id_topic) REFERENCES topic(id_topic) ON DELETE CASCADE
+);
+
+CREATE TABLE admin (
+    id_admin INT AUTO_INCREMENT PRIMARY KEY,
+    admin_name VARCHAR(225) NOT NULL
+);
